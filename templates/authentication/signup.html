@@ -1,0 +1,251 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Sign Up</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+	<link rel="stylesheet" href="{% static 'intl-tel-input/build/css/intlTelInput.css' %}">
+  	<!-- <link rel="stylesheet" href="{% static 'intl-tel-input/build/css/demo.css' %}"> -->
+
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	{% load static %}
+	</head>
+	<body class="img js-fullheight" style="background-image: url(../../static/images/bg_21.jpg);">
+		<section class="ftco-section">
+			
+			<br>
+			<div class="row justify-content-center" style="margin-top: -83PX;">
+				<div class="col-md-6 text-center mb-5" >
+					<h1 class="heading-section" style=" font-size: 400%; font-family: Trebuchet MS;  color: rgb(250,158,31); ">Create your account</h1>
+				</div>
+			</div>
+
+			<div id="zonedenotification"  role="alert">
+				<center>
+					{% if error %}
+						<span style="color: red; font-size: x-large;"> {{ error }} </span> 
+					{% endif %}	
+				</center>
+			</div>
+
+			<br><br>
+
+			<div class="container">
+				
+				<div class="row justify-content-center" style="margin-top: -53PX;">
+					<div class="col-md-6 col-lg-4">
+						<div class="login-wrap p-0">
+							<h3 class="mb-4 text-center">    </h3>
+							<form action="/signup" method="post" class="signin-form">
+								{% csrf_token %}
+
+                                <div class="form-group">
+									<input type="text" name="nin" id="nin" class="form-control"  placeholder="Enter your nin" required>
+								</div>
+
+                                <div class="form-group">
+									<input type="text" name="fname" id="fname" placeholder="Enter your First Name" class="form-control"  required>
+								</div>
+
+                                <div class="form-group">
+									<input type="text" name="lname" id="lname" placeholder="Enter your Last Name" class="form-control" required>
+								</div>
+
+								<div class="form-group">
+									<input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email Adress" required>
+								</div>
+
+								<div class="form-group">
+									<input  type="number" name="tel" id="tel" maxlength="10"  class="form-control" placeholder="Enter your telephone number" style="width: 350px;"  required>
+								</div>
+							
+								<div class="form-group">
+									<div class="input-group" id="show_hide_password">
+										<input  name="pass1" id="pass1" type="password" class="form-control" placeholder="Password" required>
+										<div class="input-group-append"  >
+											<span class="input-group-text" style="background-color:#70716e ;"><a href="" ><i class="fa fa-eye-slash" aria-hidden="true"></i></a></span>
+										</div>
+									</div>
+
+
+								</div>
+
+                                <div class="form-group">
+									<div class="input-group" id="show_hide_password2">
+										<input  name="pass2" id="pass2" type="password" class="form-control" placeholder=" Cornfirm your Password " required>
+										<div class="input-group-append" >
+											<span class="input-group-text" style="background-color:#70716e ;"><a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a></span>
+										</div>
+									</div>
+								</div>
+							
+
+								<div class="form-group">
+									<button type="submit" class="form-control btn btn-primary submit px-2">REGISTER</button>
+								</div>
+
+							
+								<div class="form-group d-md-flex">
+									<div class="w-50">
+										<!-- <label class="checkbox-wrap checkbox-primary">Remember Me
+											<input type="checkbox" checked>
+											<span class="checkmark"></span>
+										</label> -->
+
+										 <a href={% url "signin" %} style=" font-size: 120%; font-family: Trebuchet MS;  color: rgb(250,158,31);  " > LOGIN </a> 
+									</div>
+
+								</div>
+							</form>
+
+							<!-- <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+							<div class="social d-flex text-center">
+								<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+								<a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/popper.js'  %}"></script>
+		<script src="{% static 'js/bootstrap.min.js'  %}"></script>
+		<script src="{% static 'js/main.js'  %}"></script>
+		<script>
+			function validateEmail($email) {
+				var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+				return emailReg.test( $email );
+			}
+
+			$(document).ready(function(){
+				$("form").submit(function(event){
+					/*Si la longueur de la valeur du champ #prenom est 0 (c'est-à-dire si
+					le champ n'a pas été rempli), on affiche un message et on empêche l'envoi*/
+					if($("#username").val().length === 0 ){
+						$("#username").after("<span style='color:red;'>Please fill in this field</span>");
+						event.preventDefault();
+					}
+					// else{
+					// 	//On effectue nos requêtes Ajax, sérialise, etc...
+					// 	let chaine = $("form").serialize();
+					// }
+					if($("#fname").val().length === 0 ){
+						$("#fname").after("<span style='color:red;'> Please fill in this field </span>");
+						event.preventDefault();
+					}
+
+					if($("#lname").val().length === 0 ){
+						$("#lname").after("<span style='color:red;'> Please fill in this field </span>");
+						event.preventDefault();
+					}
+
+					if($("#email").val().length === 0 ){
+						$("#email").after("<span style='color:red;'> Please fill in this field </span>");
+						event.preventDefault();
+					}if( !validateEmail($("#email").val())) { 
+						/* do stuff here */ 
+						$("#email").after("<span style='color:red;'> Email is not correct </span>");
+						event.preventDefault()
+					}
+
+					if($("#pass1").val().length === 0 &&  $("#pass2").val().length === 0 ){
+						$("#pass1").after("<span style='color:red;'> Please fill in this field </span>");
+						$("#pass2").after("<span style='color:red;'> Please fill in this field </span>");
+						event.preventDefault();
+					}else if ($("#pass1").val() !== $("#pass2").val()){
+						$("#pass2").after("<span style='color:red;'>The password does not match </span>");
+						event.preventDefault()
+					}
+
+
+
+				});
+			});
+		</script>
+
+		<!-- Script to appear and disapear the notification -->
+		<script>
+			function masquernotification()
+			{
+				document.getElementById("zonedenotification").innerHTML="";
+			}
+			window.setTimeout(masquernotification, 8000);
+		</script>
+
+		<script>
+			$(document).ready(function() {
+				$("#show_hide_password a").on('click', function(event) {
+					event.preventDefault();
+					if($('#show_hide_password input').attr("type") == "text"){
+						$('#show_hide_password input').attr('type', 'password');
+						$('#show_hide_password i').addClass( "fa-eye-slash" );
+						$('#show_hide_password i').removeClass( "fa-eye" );
+					}else if($('#show_hide_password input').attr("type") == "password"){
+						$('#show_hide_password input').attr('type', 'text');
+						$('#show_hide_password i').removeClass( "fa-eye-slash" );
+						$('#show_hide_password i').addClass( "fa-eye" );
+					}
+				});
+
+				$("#show_hide_password2 a").on('click', function(event) {
+					event.preventDefault();
+					if($('#show_hide_password2 input').attr("type") == "text"){
+						$('#show_hide_password2 input').attr('type', 'password');
+						$('#show_hide_password2 i').addClass( "fa-eye-slash" );
+						$('#show_hide_password2 i').removeClass( "fa-eye" );
+					}else if($('#show_hide_password2 input').attr("type") == "password"){
+						$('#show_hide_password2 input').attr('type', 'text');
+						$('#show_hide_password2 i').removeClass( "fa-eye-slash" );
+						$('#show_hide_password2 i').addClass( "fa-eye" );
+					}
+				});
+			});
+		</script>
+
+		<!--Verification des numéros de telephones  -->
+		<script src="{% static 'intl-tel-input/build/js/intlTelInput.js' %}"></script>
+		<script>
+			var input = document.querySelector("#tel");
+			window.intlTelInput(input, {
+			// allowDropdown: false,
+			// autoHideDialCode: false,
+			// autoPlaceholder: "off",
+			dropdownContainer: document.body,
+			// excludeCountries: ["us"],
+			// formatOnDisplay: false,
+			// geoIpLookup: function(callback) {
+			//   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+			//     var countryCode = (resp && resp.country) ? resp.country : "";
+			//     callback(countryCode);
+			//   });
+			// },
+			// hiddenInput: "full_number",
+			// initialCountry: "auto",
+			// localizedCountries: { 'fr': 'French' },
+			// nationalMode: false,
+			// onlyCountries: ['us', 'fr', 'ch', 'ca', 'do'],
+			// placeholderNumberType: "MOBILE",
+			// preferredCountries: ['cn', 'jp'],
+			// separateDialCode: true,
+			utilsScript: "intl-tel-input/build/js/utils.js",
+			});
+			
+
+
+		</script>
+
+	</body>
+</html>
+
