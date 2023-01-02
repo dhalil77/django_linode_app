@@ -8,7 +8,7 @@
 -->
 <html>
 	<head>
-		<title>Famille FoTouni France</title>
+		<title>Famille Fotouni France</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'index/assets/css/main.css' %}" />
@@ -28,7 +28,7 @@
 						<div class="content">
 							<div class="inner">
 								<h1>Conseil de famille Fotouni</h1>
-								<p>
+								<p style='font-size: 40px'>
 									<!-- Famille FoTouni  <a href="#">France</a> <br /> -->
 									Famille FoTouni France  <a href="#"></a> 
 								</p>
@@ -39,9 +39,9 @@
 								<!-- <li><a href="#intro">Intro</a></li>
 								<li><a href="#work">Work</a></li>
 								<li><a href="#about">About</a></li> -->
-								<li><a href="#contact">Participé au sondage</a></li>
+								<li><a href="#contact">Adhesion AFFF</a></li>
 								<li><a href="#codefo">Adhesion CODEFO</a></li>
-								<li><a href="#election">Election Président</a></li>
+								<li><a href="#election">Election</a></li>
 								<li><a href="#contact">Rencontre Juin 2023</a></li>
 							</ul>
 						</nav>
@@ -78,6 +78,65 @@
 							<article id="election">
 								<h2 class="major">Election du président</h2>
 								<span class="image main"><img src="{% static 'index/images/pic03.jpg' %}" alt="" /></span>
+								<form method="post" action="{% url "vote" %}">
+									{% csrf_token %}
+
+									<div class="fields">
+										<div class="field half">
+											<label for="fname">NOM</label>
+											<input type="text" name="fname" id="fname" />
+										</div>
+
+										<div class="field half">
+											<label for="lname">PRENOM</label>
+											<input type="text" name="lname" id="lname" />
+										</div>
+
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+
+										<div class="field half">
+											<label for="tel">Numéro de Telephone</label>
+											<input type="number" name="telephone" id="tel" />
+										</div>
+
+										<div class="field half">
+											<label for="choix">Choix</label>
+
+											<select name="choix" id="choix">
+												<option value="0">Vote blanc</option>
+												<option value="1">Jean</option>
+												<option value="2">Jacques</option>
+												<option value="3">Pierre</option>
+											</select>
+											<!-- <input type="text" name="email" id="email" /> -->
+
+											<!-- <input type="checkbox" id="demo-human" name="demo-human" checked>
+											<label for="demo-human">Jean</label>
+
+											<input type="checkbox" id="demo-human" name="demo-human" >
+											<label for="demo-human">Robot</label>
+
+											<input type="checkbox" id="demo-human" name="demo-human" >
+											<label for="demo-human">Paul</label> -->
+										</div>
+
+									
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Envoyer" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+							</article>
+						
+						<!-- codefo -->
+							<article id="codefo">
+								<h2 class="major">Formulaire d'ahérent</h2>
+								<!-- <h2 class="major">Formulaire d'ahérent </h2> -->
+								<!-- <span class="image main"><img src="{% static 'index/images/pic03.jpg' %}" alt="" /></span> -->
 								<form method="post" action="#">
 
 									<div class="fields">
@@ -92,28 +151,27 @@
 										</div>
 
 										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
+											<label for="lname">Numéro d'adhérent</label>
+											<input type="text" name="name" id="name" />
 										</div>
 
+										<div class="field half">
+											<label for="lname">Villes</label>
+											<input type="text" name="name" id="name" />
+										</div>
+
+										<div class="field half">
+											<label for="lname">DATE</label>
+											<input type="date" name="name" id="name" weigth="120px"/>
+										</div>
+
+									
 										<div class="field half">
 											<label for="email">Numéro de Telephone</label>
-											<input type="text" name="email" id="email" />
+											<input type="number" name="email" id="email" />
 										</div>
 
-										<div class="field half">
-											<label for="choix">Choix</label>
-											<!-- <input type="text" name="email" id="email" /> -->
-
-											<input type="checkbox" id="demo-human" name="demo-human" checked>
-											<label for="demo-human">Jean</label>
-
-											<input type="checkbox" id="demo-human" name="demo-human" >
-											<label for="demo-human">Robot</label>
-
-											<input type="checkbox" id="demo-human" name="demo-human" >
-											<label for="demo-human">Paul</label>
-										</div>
+									
 
 									
 									</div>
@@ -123,64 +181,14 @@
 									</ul>
 								</form>
 							</article>
-						
-					<!-- codefo -->
-						<article id="codefo">
-							<h2 class="major">Formulaire d'ahérent</h2>
-							<!-- <h2 class="major">Formulaire d'ahérent </h2> -->
-							<!-- <span class="image main"><img src="{% static 'index/images/pic03.jpg' %}" alt="" /></span> -->
-							<form method="post" action="#">
-
-								<div class="fields">
-									<div class="field half">
-										<label for="fname">NOM</label>
-										<input type="text" name="name" id="name" />
-									</div>
-
-									<div class="field half">
-										<label for="lname">PRENOM</label>
-										<input type="text" name="name" id="name" />
-									</div>
-
-									<div class="field half">
-										<label for="lname">Numéro d'adhérent</label>
-										<input type="text" name="name" id="name" />
-									</div>
-
-									<div class="field half">
-										<label for="lname">CENTRE</label>
-										<input type="text" name="name" id="name" />
-									</div>
-
-									<div class="field half">
-										<label for="lname">DATE</label>
-										<input type="date" name="name" id="name" weigth="120px"/>
-									</div>
-
-								
-									<div class="field half">
-										<label for="email">Numéro de Telephone</label>
-										<input type="number" name="email" id="email" />
-									</div>
-
-								
-
-								
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Envoyer" class="primary" /></li>
-									<li><input type="reset" value="Reset" /></li>
-								</ul>
-							</form>
-						</article>
 
 
 
 						<!-- Contact -->
 							<article id="contact">
-								<h2 class="major">SONDAGE</h2>
+								<h2 class="major">ADHSION A AFFF</h2>
 								<form method="post" action="#">
-
+									{% csrf_token %}
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>

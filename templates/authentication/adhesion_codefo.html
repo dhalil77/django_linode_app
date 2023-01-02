@@ -1,0 +1,233 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	<title>Famille Fotouni France</title>
+
+	<link rel="shortcut icon" href="{% static 'index2/assets/images/gt_favicon.png">
+	
+	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="{% static 'index2/assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'index2/assets/css/font-awesome.min.css' %}">
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="{% static 'index2/assets/css/bootstrap-theme.css' %}" media="screen" >
+	<link rel="stylesheet" href="{% static 'index2/assets/css/main.css' %}">
+	{% load static %}
+</head>
+
+<body>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+					<a class="navbar-brand" href="index.html"><img src="{% static 'index2/assets/images/fff.png' %}" alt="Progressus HTML5 template"></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li ><a href="/">ACCEUIL</a></li>
+				
+						<li ><a href="{% url "election" %}">ELECTION</a></li>
+
+						<li><a href="{% url "rencontre" %}">RENCOTRE JUIN 2023</a></li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">ADHESION <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{% url "adhesion_aff" %}">AFFF</a></li>
+								<li class="active"><a href="{% url "adhesion_codefo" %}">CODEFO</a></li>
+							</ul>
+						</li>
+						<!-- <li><a href="about.html">A PROPOS DE</a></li> -->
+						<!-- <li><a class="btn" href="signin.html">SIGN IN / SIGN UP</a></li> -->
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div> 
+	<!-- /.navbar -->
+
+	<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="/">Acceuil</a></li>
+			<li class="active">ADHESION CODEFO</li>
+		</ol>
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-sm-9 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">ADHESION CODEFO</h1>
+				</header>
+				
+				<p>
+					Le CODEFO a pour objectif de coordonner les activités de développement économique, social et culturel du groupement Fotouni
+				</p>
+
+				<br>
+					<form method="post" action="#">
+						
+						{% csrf_token %}
+
+						<div class="row">
+							<div class="col-sm-4">
+								<input class="form-control" name="fname" type="text" placeholder="Nom">
+							</div>
+
+							<div class="col-sm-4">
+								<input class="form-control" name="lname" type="text" placeholder="Prenom">
+							</div>
+				
+							<div class="col-sm-4">
+								<input class="form-control" name="telephone" type="text" placeholder="Numéro de telephone">
+							</div>
+						</div>
+
+						<br>
+
+						<div class="row">
+							<div class="col-sm-4">
+								<input class="form-control" name="fname" type="text" placeholder="Pays">
+							</div>
+
+							<div class="col-sm-4">
+								<input class="form-control" name="lname" type="text" placeholder="Ville">
+							</div>
+				
+							<div class="col-sm-4">
+								<input class="form-control" name="telephone" type="text" placeholder="Addresse">
+							</div>
+							
+						</div>
+
+						<br>
+					
+						
+						<div class="row">
+							<div class="col-sm-6">
+								<label class="checkbox"><input type="checkbox"> J'ai deja payer <span style="color: red">(une verification va être effectuer)</span></label>
+							</div>
+							<div class="col-sm-12 text-right">
+								<input class="btn btn-primary" type="submit" value="Adherer">
+							</div>  
+						</div>
+					</form>
+
+			</article>
+			<!-- /Article -->
+			
+			<!-- Sidebar -->
+			<aside class="col-sm-3 sidebar sidebar-right">
+
+				<div class="widget">
+					<h4></h4>
+					<a class="navbar-brand" href="http://codefo.org/"><img src="{% static 'index2/assets/images/codefo.png' %}" alt="Progressus HTML5 template"></a>
+					
+				</div>
+
+			</aside>
+			<!-- /Sidebar -->
+
+		</div>
+	</div>	<!-- /container -->
+	
+	<section class="container-full top-space">
+		<div id="map"></div>
+	</section>
+
+	<footer id="footer">
+
+		<div class="footer1">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Contact</h3>
+						<div class="widget-body">
+							<p>+33 0769197526<br>
+								<a href="mailto:#">ktchibonsou@yahoo.com</a><br>
+								<br>
+								8, AVENUE HENRI BARBUSSE, TRAPPES 78190
+							</p>	
+						</div>
+					</div>
+
+					<div class="col-md-3 widget">
+						<h3 class="widget-title"></h3>
+						<div class="widget-body">
+							<p class="follow-me-icons">
+								
+							</p>	
+						</div>
+					</div>
+
+					<div class="col-md-6 widget">
+						<h3 class="widget-title">Text widget</h3>
+						<div class="widget-body">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?</p>
+							
+						</div>
+					</div>
+
+				</div> <!-- /row of widgets -->
+			</div>
+			
+		</div>
+
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+					
+						<div class="col-md-6 widget">
+							<div class="widget-body">
+								<p class="simplenav">
+									<a href="#">ACCEUIL</a> | 
+									<a href="about.html">ELECTION</a> |
+									<a href="sidebar-right.html">ADHESION</a> </b>
+								</p>
+							</div>
+						</div>
+
+					<div class="col-md-6 widget">
+						<div class="widget-body">
+							<p class="text-right">
+								Copyright &copy; 2023, FFF. Designed by <a href="/" rel="designer">DHALIL</a> 
+							</p>
+						</div>
+					</div>
+
+				</div> <!-- /row of widgets -->
+			</div>
+		</div>
+	</footer>	
+		
+
+
+
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="assets/js/headroom.min.js"></script>
+	<script src="assets/js/jQuery.headroom.min.js"></script>
+	<script src="assets/js/template.js"></script>
+	
+	<!-- Google Maps -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=&amp;sensor=false&amp;extension=.js"></script> 
+	<script src="assets/js/google-map.js"></script>
+	
+
+</body>
+</html>
