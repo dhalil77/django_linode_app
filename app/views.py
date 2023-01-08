@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import VoteUser
 from datetime import datetime
 
@@ -38,11 +39,12 @@ def rencontre(request):
 
 
 def vote(request):
- 
+    Vote_Users = VoteUser.objects.all()
+
+
     if request.method == "POST":
         fname = request.POST['fname']
         lname = request.POST['lname']
-        email = "test@test.com"
         telephone = request.POST['telephone']
 
         
@@ -59,27 +61,41 @@ def vote(request):
             choix = "Vote blanc"
 
         
+        for vote in Vote_Users:
+
+            if vote.first_name == fname :
+                print('exist')
+                
+    
         updated_at = datetime.now()
 
         record = VoteUser(
             first_name = fname,
             last_name = lname,
-            email = email,
             telephone = telephone,
             choix = choix,
-            updated_at = updated_at
+            # updated_at = updated_at
         )
 
-        record.save()
+        try:
+            record.save()
+            messages.add_message(request, messages.INFO, 'Well done! vous avez voté.')
+
+        except Exception as e:
+            messages.add_message(request, messages.INFO, 'Sorry ! Vous avez deja voté un candicat.')
+            print('vous avez deja voté')
        
 
     return redirect("/signup")
 
 
 def dashboard(request):
-    
 
-    return render(request, 'dashboard/index.html')
+    Vote_Users = VoteUser.objects.all()
+
+    total = Vote_Users.count()
+
+    return render(request, 'dashboard/index.html', {'nombre':total})
 
 def all_users(request):
     
