@@ -247,19 +247,19 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active"><a href="#">ACCEUIL</a></li>
+					<li ><a href="/">ACCEUIL</a></li>
 			
-					<li><a href="{% url "election" %}">ELECTION</a></li>
+					<li ><a href="{% url "election" %}">RECENSEMENT</a></li>
 
-					<li><a href="{% url "rencontre" %}">RENCOTRE JUIN 2023</a></li>
-
-					<li class="dropdown">
+					<li class="active"><a href="{% url "rencontre" %}">RENCOTRE JUIN 2023</a></li>
+					
+					<!-- <li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">ADHESION <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="{% url "adhesion_aff" %}">AFFF</a></li>
-							<li><a href="{% url "adhesion_codefo" %}">CODEFO</a></li>
+							<li class="active"><a href="{% url "adhesion_aff" %}">AFFF</a></li>
+							<li ><a href="{% url "adhesion_codefo" %}">CODEFO</a></li>
 						</ul>
-					</li>
+					</li> -->
 					<!-- <li><a href="about.html">A PROPOS DE</a></li> -->
 					<!-- <li><a class="btn" href="signin.html">SIGN IN / SIGN UP</a></li> -->
 				</ul>
