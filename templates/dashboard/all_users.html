@@ -258,50 +258,71 @@
                         <!-- Add class <code>.table-striped</code> -->
                       </p>
                       <div class="table-responsive">
+
                         <table class="table table-striped">
                           <thead>
                             <tr>
                               <th>
-                                Number
+                                N°
                               </th>
                               <th>
-                                First name
+                                Nom
                               </th>
                               <th>
-                                Progress
+                                Prenom
                               </th>
                               <th>
-                                number
+                                numero de telephone
                               </th>
                               <th>
-                                date of vote
+                                Pays
+                              </th>
+
+                              <th>
+                                Adhere au CODEFO 
                               </th>
                             </tr>
                           </thead>
-                          <tbody>
 
-                            <tr>
-                              <td class="py-1">
-                                1
-                              </td>
-                              <td>
-                                Herman Beck
-                              </td>
-                              <td>
-                                <div class="progress">
-                                  <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                              </td>
-                              <td>
-                                0769197526
-                              </td>
-                              <td>
-                                May 15, 2015
-                              </td>
-                            </tr>
-                      
+                          
+                          <tbody>
+                            {% for user in Users %}
+                              <tr>
+                                <td class="py-1">
+                                  {{user.User_id}}
+                                </td>
+                                <td>
+                                  {{user.first_name}}
+                                </td>
+                                <td>
+                                  <!-- <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div> -->
+
+                                  {{user.last_name}}
+                                </td>
+                                <td>
+                                  {{user.telephone}}
+                                </td>
+                                <td>
+                                  {{user.choix}}
+                                </td>
+
+                                <td>
+                                  
+                                  {% if user.status == True %}
+                                    <span style="color: green"> Veut adherer </span>
+                                  {% endif %}
+
+                                  {% if user.status == False  %}
+                                    <span style="color: red"> Ne pas veut adherer </span>
+                                  {% endif %}
+                                </td>
+                              </tr>
+                            {% endfor %}
                           </tbody>
                         </table>
+
                       </div>
                     </div>
                   </div>
