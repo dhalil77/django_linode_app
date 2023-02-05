@@ -81,7 +81,7 @@ def vote(request):
         #     if vote.first_name == fname or vote.last_name == fname :
         #         messages.add_message(request, messages.INFO, 'Sorry ! Vous avez déja ')
         print(status)    
-        record = Users(
+        record = VoteUser(
             first_name = fname,
             last_name = lname,
             telephone = telephone,
@@ -114,7 +114,7 @@ def dashboard(request):
     return render(request, 'dashboard/index.html', {'nombre':total})
 
 def all_users(request):
-    Users = Users.objects.all()
+    Users = VoteUser.objects.all()
 
     # for vote in Vote_Users:
 
