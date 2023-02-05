@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import VoteUser
+from .models import VoteUser, Users
 from datetime import datetime
 
 # Create your views here.
@@ -39,7 +39,7 @@ def rencontre(request):
 
 
 def vote(request):
-    Vote_Users = VoteUser.objects.all() 
+    Users = Users.objects.all() 
 
     if request.method == "POST":
         fname = request.POST['fname']
@@ -80,7 +80,7 @@ def vote(request):
         #     if vote.first_name == fname or vote.last_name == fname :
         #         messages.add_message(request, messages.INFO, 'Sorry ! Vous avez déja ')
         print(status)    
-        record = VoteUser(
+        record = Users(
             first_name = fname,
             last_name = lname,
             telephone = telephone,
@@ -106,14 +106,14 @@ def vote(request):
 
 def dashboard(request):
 
-    Vote_Users = VoteUser.objects.all()
+    Users = Users.objects.all()
 
-    total = Vote_Users.count()
+    total = Users.count()
 
     return render(request, 'dashboard/index.html', {'nombre':total})
 
 def all_users(request):
-    Users = VoteUser.objects.all()
+    Users = Users.objects.all()
 
     # for vote in Vote_Users:
 
