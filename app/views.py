@@ -39,47 +39,62 @@ def rencontre(request):
 
 
 def vote(request):
-    Vote_Users = VoteUser.objects.all()
-
+    Vote_Users = VoteUser.objects.all() 
 
     if request.method == "POST":
         fname = request.POST['fname']
         lname = request.POST['lname']
         telephone = request.POST['telephone']
 
+        if request.POST['choix'] == "Fr" :
+            choix = "France"
+
+        elif request.POST['choix'] == "An" :
+            choix = "Angleterer"
+
+        elif request.POST['choix'] == "Bel" :
+            choix = "Belgique"
         
-        if request.POST['choix'] == "1" :
-            choix = "jean"
+        elif request.POST['choix'] == "Esp":
+            choix = "Espagne"
 
-        elif request.POST['choix'] == "2" :
-            choix = "jacque"
+        elif request.POST['choix'] == "Sui":
+            choix = "Suisse"
 
-        elif request.POST['choix'] == "3" :
-            choix = "pierre"
+        elif request.POST['choix'] == "other":
+            choix = "other"
+
+        try:
+            if request.POST['chk[]'] == "on":
+                status = True
+        except Exception as e:
+            status = False
         
-        elif request.POST['choix'] == "0":
-            choix = "Vote blanc"
 
+        ville = request.POST['adresse']
+
+        adresse = request.POST['adresse']
         
-        for vote in Vote_Users:
+        # for vote in Vote_Users:
 
-            if vote.first_name == fname :
-                print('exist')
-                
-    
-        updated_at = datetime.now()
-
+        #     if vote.first_name == fname or vote.last_name == fname :
+        #         messages.add_message(request, messages.INFO, 'Sorry ! Vous avez déja ')
+        print(status)    
         record = VoteUser(
             first_name = fname,
             last_name = lname,
             telephone = telephone,
-            choix = choix,
+            choix = request.POST['choix'],
+            ville = ville,
+            adresse = adresse,
+            status = status, 
+            updated_at = datetime.now()
             # updated_at = updated_at
         )
 
         try:
             record.save()
-            messages.add_message(request, messages.INFO, 'Well done! vous avez voté.')
+            messages.add_message(request, messages.INFO, 'Well done! vous avez validé .')
 
         except Exception as e:
             messages.add_message(request, messages.INFO, 'Sorry ! Vous avez deja voté un candicat.')
@@ -98,9 +113,15 @@ def dashboard(request):
     return render(request, 'dashboard/index.html', {'nombre':total})
 
 def all_users(request):
-    
+    Users = VoteUser.objects.all()
 
-    return render(request, 'dashboard/all_users.html')
+    # for vote in Vote_Users:
+
+        #     if vote.first_name == fname or vote.last_name == fname :
+        #         messages.add_message(request, messages.INFO, 'Sorry ! Vous avez déja ')
+        
+
+    return render(request, 'dashboard/all_users.html', {'Users':Users})
 
 
 

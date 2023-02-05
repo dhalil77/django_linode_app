@@ -35,9 +35,9 @@
 					<ul class="nav navbar-nav pull-right">
 						<li ><a href="/">ACCEUIL</a></li>
 				
-						<li ><a href="{% url "election" %}">RECENSEMENT</a></li>
+						<li class="active"><a href="{% url "election" %}">RECENSEMENT</a></li>
 
-						<li class="active"><a href="{% url "rencontre" %}">RENCOTRE JUIN 2023</a></li>
+						<li><a href="{% url "rencontre" %}">RENCOTRE JUIN 2023</a></li>
 						
 						<!-- <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">ADHESION <b class="caret"></b></a>
@@ -61,7 +61,7 @@
 
 		<ol class="breadcrumb">
 			<li><a href="/">Acceuil</a></li>
-			<li class="active">Election</li>
+			<li class="active">RECENSEMENT</li>
 		</ol>
 
 		<div class="row">
@@ -69,82 +69,79 @@
 			<!-- Article main content -->
 			<article class="col-sm-9 maincontent">
 				<header class="page-header">
-					<h1 class="page-title">Election du President de l'Association</h1>
+					<h1 class="page-title">RECENSEMENT</h1>
 				</header>
 				
-				<p>
-					L'élection est la désignation, par le vote d'électeurs, de représentants destinés à les représenter ou occuper une fonction en leur nom.
-
-					La population concernée transfère par le vote de sa majorité à des représentants ou mandants choisis, la légitimité requise pour exercer le pouvoir attribué.
-				</p>
+				
 
 				<br>
-					<form method="post" action="{% url "vote" %}">
 
-						{% csrf_token %}
-						<div class="row">
-							<div class="col-sm-4">
-								<input class="form-control" name="fname" type="text" placeholder="Nom">
-							</div>
+				<form method="post" action="{% url "vote" %}">
 
-							<div class="col-sm-4">
-								<input class="form-control" name="lname" type="text" placeholder="Prenom">
-							</div>
-				
-							<div class="col-sm-4">
-								<input class="form-control" name="telephone" type="text" placeholder="Numéro de telephone">
-							</div>
+					{% csrf_token %}
+					<div class="row">
+						<div class="col-sm-4">
+							<input class="form-control" name="fname" type="text" placeholder="Nom">
 						</div>
 
-						<br>
-
-						<div class="row">
-							<div class="col-sm-4">
-								
-								<select class="form-control">
-									<option value="#">Pays</option>
-									<option valeur="fr">France</option>
-									<option valeur="an">Angleterre</option>
-									<option valeur="Bel">Belgique</option>
-									<option valeur="Esp">Espagne</option>
-									<option valeur="Sui">Suisse</option>
-							
-									<option valeur="other">Autre</option>
-								</select>
-
-
-
-
-								<!-- <input class="form-control" name="fname" type="text" placeholder="Pays"> -->
-							</div>
-
-							<div class="col-sm-4">
-								<input class="form-control" name="lname" type="text" placeholder="Ville">
-							</div>
-				
-							<div class="col-sm-4">
-								<input class="form-control" name="telephone" type="text" placeholder="Addresse">
-							</div>
-							
+						<div class="col-sm-4">
+							<input class="form-control" name="lname" type="text" placeholder="Prenom">
 						</div>
+			
+						<div class="col-sm-4">
+							<input class="form-control" name="telephone" type="text" placeholder="Numéro de telephone">
+						</div>
+					</div>
 
-						<br>
+					<br>
+
+					<div class="row">
+						<div class="col-sm-4">
+							
+							<select class="form-control" name="choix">
+								<option value="#">Pays</option>
+								<option valeur="fr">France</option>
+								<option valeur="an">Angleterre</option>
+								<option valeur="Bel">Belgique</option>
+								<option valeur="Esp">Espagne</option>
+								<option valeur="Sui">Suisse</option>
 						
-						<div class="row">
-							<div class="col-sm-6">
-								<label class="checkbox"><input type="checkbox"> J'ai deja payer <span style="color: red">(une verification va être effectuer)</span></label>
-							</div>
+								<option valeur="other">Autre</option>
+							</select>
+
+
+
+
+							<!-- <input class="form-control" name="fname" type="text" placeholder="Pays"> -->
+						</div>
+
+						<div class="col-sm-4">
+							<input class="form-control" name="ville" type="text" placeholder="Ville">
+						</div>
+			
+						<div class="col-sm-4">
+							<input class="form-control" name="adresse" type="text" placeholder="Addresse">
+						</div>
+						
+					</div>
+
+					<br>
 					
+					<div class="row">
+						<div class="col-sm-6">
+							<input type="checkbox" name="chk[]" > <span style="color: green">Voulez vous adherez au CODEFO ? </span>
 						</div>
+					</div>
+					
+					<div class="row">
 						
-						<div class="row">
-							
-							<div class="col-sm-12 text-right">
-								<!-- <input class="btn btn-primary" type="submit" onclick="return confirm('Etes vous sur de vos information ajouter ?');" value="Adherer"> -->
-								<input class="btn btn-primary" type="" onclick="return confirm('Pas encore actif ?');" value="Adherer">
-							</div>  
-						</div>
-					</form>
+						<div class="col-sm-12 text-right">
+							<input class="btn btn-primary" type="submit" onclick="return confirm('Etes vous sur de vos information ajouter ?');" value="Adherer">
+							<!-- <input class="btn btn-primary" type="" onclick="return confirm('Pas encore actif ?');" value="Adherer"> -->
+						</div>  
+					</div>
+
+				</form>
 
 			</article>
 			<!-- /Article -->
