@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import VoteUser
+from .models import User_rcsm
 from datetime import datetime
 
 # Create your views here.
@@ -39,7 +40,7 @@ def rencontre(request):
 
 
 def vote(request):
-    Vote_Users = VoteUser.objects.all() 
+    Users = VoteUser.objects.all() 
 
     if request.method == "POST":
         fname = request.POST['fname']
@@ -71,7 +72,7 @@ def vote(request):
             status = False
         
 
-        ville = request.POST['adresse']
+        ville = request.POST['ville']
 
         adresse = request.POST['adresse']
         
@@ -106,9 +107,9 @@ def vote(request):
 
 def dashboard(request):
 
-    Vote_Users = VoteUser.objects.all()
+    Users = VoteUser.objects.all()
 
-    total = Vote_Users.count()
+    total = Users.count()
 
     return render(request, 'dashboard/index.html', {'nombre':total})
 
